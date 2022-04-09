@@ -4,15 +4,15 @@
 Created on Thu Apr  7 18:33:07 2022
 @author: gui
 """
-import PySimpleGUI as sg
 import os
+import PySimpleGUI as sg
 
 sg.theme('DarkBlue4')
 
-cmd = "gtts-cli -l "
-cmd3 = "' | play -t mp3 -"
-cmd4 = "'   --output "
-mp3 = ".mp3"
+CMD = "gtts-cli -l "
+CMD3 = "' | play -t mp3 -"
+CMD4 = "'   --output "
+MP3 = ".mp3"
 
 lang_en = ["com", "co.uk", "ca", "com.au", "co.in", "co.za", "ie"]
 lang_pt = ["com.br", "pt"]
@@ -51,13 +51,15 @@ janela = sg.Window('Text to Speech', layout=layout, auto_size_text=True,
 
 
 def check_language():
+    """Retorna o valor da linguagem escolhida"""
     textlang = valores['other_key']
     if valores["-IN2-"]:
-        return "en  -t "+textlang
+        language = "en  -t "+textlang
     elif valores["-IN1-"]:
-        return "pt -t "+textlang
+        language = "pt -t "+textlang
     elif valores["-IN3-"]:
-        return "es -t "+textlang
+        language = "es -t "+textlang
+    return language
 
 
 # ler os eventos
@@ -72,7 +74,7 @@ while True:
     if eventos == '-PASTE-':
         text = valores['-INPUT-']
         lang = check_language()
-        result = cmd+lang+"  '"+text+cmd3
+        result = CMD+lang+"  '"+text+CMD3
         # sg.popup(result)
         os.system(result)
     if eventos == '-FILE-':
@@ -81,7 +83,7 @@ while True:
             sg.popup("Nenhum Arq Selecionado")
         else:
             lang = check_language()
-            result = cmd+lang+" -f '"+iname+cmd3
+            result = CMD+lang+" -f '"+iname+CMD3
             # sg.popup(result)
             os.system(result)
     if eventos == '-SAVE-':
@@ -90,12 +92,12 @@ while True:
         fname = valores['-FIILENAME-']
         if not iname:
             lang = check_language()
-            result = cmd+lang+" '"+text+cmd4+fname+mp3
+            result = CMD+lang+" '"+text+CMD4+fname+MP3
             sg.popup("Salvando", title="Salvando",)
             os.system(result)
         else:
             lang = check_language()
-            result = cmd+lang+" -f '"+iname+cmd4+fname+mp3
+            result = CMD+lang+" -f '"+iname+CMD4+fname+MP3
             sg.popup("Salvando")
             os.system(result)
     if valores["-IN2-"]:

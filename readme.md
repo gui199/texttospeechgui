@@ -1,6 +1,6 @@
 # Text To Speech gTTS
 
-Uma interface gráfica usando PySimpleGUI para o  **gTTS** (*Google Text-to-Speech*).
+Uma interface gráfica usando **PySimpleGUI** para o  **gTTS** (*Google Text-to-Speech*).
 
 ## Recursos
 
@@ -12,7 +12,6 @@ Uma interface gráfica usando PySimpleGUI para o  **gTTS** (*Google Text-to-Spee
 
 - [PySimpleGUI](https://github.com/PySimpleGUI/PySimpleGUI)
 - [gTTS](https://github.com/pndurette/gTTS)
-
 
 ### Quickstart
 	$ python3 -m venv venv
