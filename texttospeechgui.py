@@ -93,12 +93,14 @@ while True:
         if not iname:
             lang = check_language()
             result = CMD+lang+" '"+text+CMD4+fname+MP3
-            sg.popup("Salvando", title="Salvando",)
+            sg.popup("Salvando", title="Salvando",
+                     auto_close=True, location=(550, 550))
             os.system(result)
         else:
             lang = check_language()
             result = CMD+lang+" -f '"+iname+CMD4+fname+MP3
-            sg.popup("Salvando")
+            sg.popup("Salvando", title="Salvando",
+                     auto_close=True, location=(550, 550))
             os.system(result)
     if valores["-IN2-"]:
         janela['other_key'].update(value=lang_en[0], values=lang_en,)
